@@ -28,7 +28,7 @@ export function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto mt-20">
-      <h2 className="text-2xl font-bold text-center">TeamPulse Login</h2>
+      <h2 className="text-2xl font-bold text-center">Team Pulse Login</h2>
       <Input
         type="email"
         placeholder="Email"
