@@ -6,7 +6,6 @@ import { ReactNode, useState } from "react";
 import { Menu } from "lucide-react";
 import { useSearch } from "@/context/SearchContext";
 import Sidebar from "./Sidebar";
-// import Sidebar from "@/components/layout/Sidebar"; // Adjust path if different
 
 export default function DashboardLayoutWrapper({
   children,
