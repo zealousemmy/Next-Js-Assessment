@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id        String   @id @default(uuid())
+  name      String
+  members   Member[]
+  createdAt DateTime @default(now())
+}
+
+model Member {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  sentiment Sentiment
+  teamId    String
+  team      Team     @relation(fields: [teamId], references: [id])
+}
+
+enum Sentiment {
+  HAPPY
+  NEUTRAL
+  SAD
+}
+
+model AppSettings {
+  id               String   @id @default("singleton")
+  checkInsEnabled  Boolean
+  checkInFrequency String
+}
